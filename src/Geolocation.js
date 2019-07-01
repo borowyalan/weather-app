@@ -1,29 +1,35 @@
 import React, { Component } from 'react'
 
 export default class Geolocation extends Component {
-    constructor(props){
-        super(props)
+    constructor(props) {
+        super(props);
         this.state = {
-          longitude: '',
-          latitude: ''
+            coords: 'Coords undefined'
         }
     }
 
-    
-    let latitude = ''
-    let longitude = ''
-  
-    navigator.geolocation.getCurrentPosition(function(position){
-        latitude = position.coords.latitude;
-        longitude = position.coords.longitude;
+    geolocationSuccess = (position) => { 
+        this.setState({
+            coords: { latitude: position.coords.latitude, longitude: position.coords.latitude }
+        })
     }
-  
-    
-    render() {
-        return (
-            <div>
-                <GeolocationAvailability />
-            </div>
-        )
-}
 
+    componentDidMount(){
+        if (!('geolocation' in navigator)) {
+            return 'Sorry, geolocation is not supported in your browser'
+        } else {
+            return (
+                navigator.geolocation.getCurrentPosition(this.geolocationSuccess)
+            );
+        }
+    }
+
+    render() {
+        return(
+        <>
+         <div> {this.state.coords.latitude}, {this.state.coords.longitude} </div>
+         <div>Geolocation city</div>
+        </>
+        );
+    }
+}
