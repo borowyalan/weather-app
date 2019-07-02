@@ -4,8 +4,8 @@ export default class Geolocation extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            "latitude": 'loading...',
-            "longitude": 'loading...',
+            latitude: 'loading...',
+            longitude: 'loading...',
             coords: 'Coords undefined'
         }
     }
