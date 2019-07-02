@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from 'axios';
 
 export default class Geolocation extends Component {
     constructor(props) {
@@ -6,13 +7,41 @@ export default class Geolocation extends Component {
         this.state = {
             latitude: 'loading...',
             longitude: 'loading...',
+            city: 'loading...',
             coords: 'Coords undefined'
         }
+
+        this.geo_options = {
+            enableHighAccuracy: true, 
+            maximumAge        : 30000, 
+            timeout           : 27000
+          };
     }
 
+    reverseGeoCode = (position) =>{
+        axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${position.coords.latitude},${position.coords.longitude}&key=AIzaSyCC-HgXX2I5MIbJuXQDGsgG5TegMyTA1Vo`)
+        .then(response => {
+            let city = response.data.results[3].formatted_address;
+
+            this.setState({
+                'city': city
+            })
+
+            console.log(city)
+        });
+    }
+ 
     geolocationSuccess = (position) => { 
         this.setState({
             coords: { latitude: position.coords.latitude, longitude: position.coords.longitude }
+        })
+
+        return this.reverseGeoCode(position)
+    }
+
+    geolocationError = () => {
+        this.setState({
+            city: 'Unable to retrieve your location'
         })
     }
 
@@ -21,7 +50,7 @@ export default class Geolocation extends Component {
             return 'Sorry, geolocation is not supported in your browser'
         } else {
             return (
-                navigator.geolocation.getCurrentPosition(this.geolocationSuccess)
+                navigator.geolocation.getCurrentPosition(this.geolocationSuccess, this.geolocationError, this.geo_options)
             );
         }
     }
@@ -30,7 +59,7 @@ export default class Geolocation extends Component {
         return(
         <>
          <div> {this.state.coords.latitude}, {this.state.coords.longitude} </div>
-         <div>Geolocation city</div>
+         <div>{this.state.city}</div>
         </>
         );
     }
