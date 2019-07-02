@@ -4,13 +4,15 @@ export default class Geolocation extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            "latitude": 'loading...',
+            "longitude": 'loading...',
             coords: 'Coords undefined'
         }
     }
 
     geolocationSuccess = (position) => { 
         this.setState({
-            coords: { latitude: position.coords.latitude, longitude: position.coords.latitude }
+            coords: { latitude: position.coords.latitude, longitude: position.coords.longitude }
         })
     }
 
