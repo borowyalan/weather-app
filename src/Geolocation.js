@@ -6,7 +6,8 @@ export default class Geolocation extends Component {
         super(props);
         this.state = {
             city: '',
-            coords: 'Coords undefined'
+            coords: 'Coords undefined',
+            status: ''
         }
 
         this.geo_options = {
@@ -25,7 +26,8 @@ export default class Geolocation extends Component {
                 'city': city
             })
 
-            console.log(city)
+            // debugging purposes
+            console.log(response.data.results[5].formatted_address)
         });
     }
  
@@ -39,7 +41,7 @@ export default class Geolocation extends Component {
 
     geolocationError = () => {
         this.setState({
-            city: 'Unable to retrieve your location'
+            'status': 'Unable to retrieve your location' 
         })
     }
 
@@ -54,10 +56,10 @@ export default class Geolocation extends Component {
     }
 
     render() {
-       return ((this.state.city === '') 
+       return ((this.state.status !== '') 
         ? (<>
-            <div> loading... </div>
-            <div></div>) 
+            <div> {this.state.status} </div>
+            <div></div>
             </>)
 
         : (<>
