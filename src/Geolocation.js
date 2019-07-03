@@ -20,7 +20,7 @@ export default class Geolocation extends Component {
     reverseGeoCode = (position) =>{
         axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${position.coords.latitude},${position.coords.longitude}&key=AIzaSyCC-HgXX2I5MIbJuXQDGsgG5TegMyTA1Vo`)
         .then(response => {
-            let city = response.data.results[6].formatted_address;
+            let city = `${response.data.results[3].address_components[0].long_name}, ${response.data.results[3].address_components[3].long_name}`;
 
             this.setState({
                 'city': city
