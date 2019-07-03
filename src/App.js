@@ -10,8 +10,12 @@ function App() {
   
 
   return (
-    <div className="App-link">
+    <div className="App">
+      <header className="App-header">
+        <div className="App-link">
           <Geolocation />
+        </div>
+      </header>
     </div>
   );
 }
