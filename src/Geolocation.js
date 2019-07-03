@@ -1,13 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import axios from 'axios';
 
 export default class Geolocation extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            latitude: 'loading...',
-            longitude: 'loading...',
-            city: 'loading...',
+            city: '',
             coords: 'Coords undefined'
         }
 
@@ -21,7 +19,7 @@ export default class Geolocation extends Component {
     reverseGeoCode = (position) =>{
         axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${position.coords.latitude},${position.coords.longitude}&key=AIzaSyCC-HgXX2I5MIbJuXQDGsgG5TegMyTA1Vo`)
         .then(response => {
-            let city = response.data.results[3].formatted_address;
+            let city = response.data.results[6].formatted_address;
 
             this.setState({
                 'city': city
@@ -56,11 +54,15 @@ export default class Geolocation extends Component {
     }
 
     render() {
-        return(
-        <>
-         <div> {this.state.coords.latitude}, {this.state.coords.longitude} </div>
-         <div>{this.state.city}</div>
-        </>
-        );
+       return ((this.state.city === '') 
+        ? (<>
+            <div> loading... </div>
+            <div></div>) 
+            </>)
+
+        : (<>
+            <div> {this.state.coords.latitude}, {this.state.coords.longitude} </div>
+            <div>{this.state.city}</div>
+         </>))
     }
 }
