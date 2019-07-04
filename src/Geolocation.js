@@ -6,6 +6,7 @@ export default class Geolocation extends Component {
         super(props);
         this.state = {
             city: '',
+            country: '',
             coords: 'Coords undefined',
             status: ''
         }
@@ -18,16 +19,30 @@ export default class Geolocation extends Component {
     }
 
     reverseGeocode = (position) =>{
-        axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${position.coords.latitude},${position.coords.longitude}&key=AIzaSyCC-HgXX2I5MIbJuXQDGsgG5TegMyTA1Vo`)
+        axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${position.coords.latitude},${position.coords.longitude}&key=AIzaSyCC-HgXX2I5MIbJuXQDGsgG5TegMyTA1Vo&result_types=locality|country`)
         .then(response => {
-            let city = `${response.data.results[3].address_components[0].long_name}, ${response.data.results[3].address_components[3].long_name}`;
+            let componentsList = response.data.results[0].address_components
+            
+            // find particular components from the response and save them to state
+            for(let i=0; i < componentsList.length-1; i++ ) {
+                let component = componentsList[i];
 
-            this.setState({
-                'city': city
-            })
+                switch(component.types[0]){
+                   case 'locality':
+                        this.setState({
+                            'city': component.long_name
+                        })
+                        break
+                   case 'country':
+                        this.setState({
+                            'country': component.long_name
+                        })
+                        break
+                   default:
+                        break;
+                }
 
-            // debugging purposes
-            console.log(response.data.results[5].formatted_address)
+            }
         });
     }
  
@@ -64,7 +79,7 @@ export default class Geolocation extends Component {
 
         : (<>
             <div> {this.state.coords.latitude}, {this.state.coords.longitude} </div>
-            <div>{this.state.city}</div>
+            <div>{this.state.city}, {this.state.country}</div>
          </>))
     }
 }
