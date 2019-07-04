@@ -3,11 +3,7 @@ import './App.css';
 import Geolocation from './Geolocation';
 
 function App() {
-
   
-
-  
-
   return (
     <div className="App">
       <header className="App-header">
