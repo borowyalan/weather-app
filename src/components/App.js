@@ -21,7 +21,10 @@ function App() {
                     maxSize={1000}
                 >
                     <FlexColumnLeft>
-                        <img src={logo} className="App-logo" alt="App-logo"/>
+                        <LogoContainer>
+                            <img src={logo} className="App-logo" alt="App-logo"/>
+                            <p>Weather App made by Borowy Alan</p>
+                        </LogoContainer>
                         <Geolocation/>
                     </FlexColumnLeft>
                     
@@ -60,10 +63,17 @@ const FlexColumn = styled.div`
     background-color: white;
 `
 const FlexColumnLeft = styled(FlexColumn)`
+
     ${'' /* width: 40%;
     margin-right: 1%; */}
 `
 
 const FlexColumnRight = styled(FlexColumn)`
     ${'' /* margin-left: 1%; */}
+`
+
+const LogoContainer = styled.div`
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 `
