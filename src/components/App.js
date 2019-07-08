@@ -1,7 +1,10 @@
 import React from 'react'
 import '../App.css'
+
 import Geolocation from './Geolocation'
+import WeatherContainer from './WeatherContainer'
 import { GeolocationProvider }  from './GeolocationProvider'
+
 import Logo from './Logo'
 import styled from 'styled-components/macro'
 
@@ -17,7 +20,7 @@ function App() {
                 </FlexColumnLeft>
                 
                 <FlexColumnRight>
-                    <div>sadf</div>
+                    <WeatherContainer/>
                 </FlexColumnRight>
 
             </GeolocationProvider>
