@@ -1,11 +1,12 @@
 import React from 'react'
 import '../App.css'
+import logo from '../assets/logo.png'
 
+import SplitPane from 'react-split-pane'
 import Geolocation from './Geolocation'
 import WeatherContainer from './WeatherContainer'
 import { GeolocationProvider }  from './GeolocationProvider'
 
-import Logo from './Logo'
 import styled from 'styled-components/macro'
 
 function App() {
@@ -14,17 +15,24 @@ function App() {
         <Container>
             <GeolocationProvider>
 
-                <FlexColumnLeft>
-                    <Logo/>
-                    <Geolocation/>
-                </FlexColumnLeft>
-                
-                <FlexColumnRight>
-                    <WeatherContainer/>
-                </FlexColumnRight>
-
+                <SplitPane
+                    split='vertical'
+                    minSize={350}
+                    maxSize={1000}
+                >
+                    <FlexColumnLeft>
+                        <img src={logo} className="App-logo" alt="App-logo"/>
+                        <Geolocation/>
+                    </FlexColumnLeft>
+                    
+                    <FlexColumnRight>
+                        <WeatherContainer/>
+                    </FlexColumnRight>
+                </SplitPane>
             </GeolocationProvider>
+
         </Container>
+        
     );
 }
 
@@ -33,7 +41,7 @@ export default App;
 
 const Container = styled.div`
     display: flex;
-    ${'' /* align-items: center; */}
+    align-items: center;
 
     min-height: 100vh;
 
@@ -52,10 +60,10 @@ const FlexColumn = styled.div`
     background-color: white;
 `
 const FlexColumnLeft = styled(FlexColumn)`
-    width: 40%;
-    margin-right: 1%;
+    ${'' /* width: 40%;
+    margin-right: 1%; */}
 `
 
 const FlexColumnRight = styled(FlexColumn)`
-    margin-left: 1%;
+    ${'' /* margin-left: 1%; */}
 `
