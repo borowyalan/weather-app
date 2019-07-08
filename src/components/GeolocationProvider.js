@@ -40,16 +40,13 @@ export class GeolocationProvider extends Component {
  
     geolocationSuccess = (position) => { 
 
-        this.setState({
-            latitude: position.coords.latitude, 
-            longitude: position.coords.longitude,
-        })
-
         reverseGeocode(position)
         .then(response => {
             this.setState({
                 'city': response.city,
-                'country': response.country
+                'country': response.country,
+                latitude: position.coords.latitude, 
+                longitude: position.coords.longitude
             })
         })
 
@@ -83,3 +80,4 @@ export class GeolocationProvider extends Component {
 }
 
 export const GeolocationConsumer = GeolocationContext.Consumer;
+export default GeolocationContext
