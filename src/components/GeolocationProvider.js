@@ -54,7 +54,6 @@ export class GeolocationProvider extends Component {
         })
 
         this.getWeather(position)
-        
     }
 
     geolocationError = () => {
@@ -75,7 +74,6 @@ export class GeolocationProvider extends Component {
     }
 
     render() {
-        
         return(
             <GeolocationContext.Provider value={this.state}>
                 {this.props.children}
