@@ -2,7 +2,6 @@ import React from 'react'
 import logo from '../assets/logo.png'
 
 import GeolocationDisplay from './GeolocationDisplay'
-import CurrentWeatherCard from './CurrentWeatherCard'
 import { GeolocationProvider }  from './GeolocationProvider'
 import SplitPaneResponsive from './SplitPaneResponsive'
 
@@ -27,7 +26,6 @@ function App() {
                     </FlexPane>
                     
                     <WeatherPane>
-                        <CurrentWeatherCard/>
                     </WeatherPane>
 
                 </SplitPaneResponsive>

@@ -1,21 +1,41 @@
-import React, { useContext } from 'react'
-import GeolocationContext from './GeolocationProvider'
-import WeatherForecastItem from './WeatherForecastItem';
+// import React, { useContext } from 'react'
+// import GeolocationContext from './GeolocationProvider'
+// import WeatherForecastCard from './CurrentWeatherCard';
 
-export default function WeatherContainer() {
+// import styled from 'styled-components/macro';
 
-    const context = useContext(GeolocationContext)
-    console.log(context.dailyForecast[0]);
+// export default function WeatherContainer() {
 
-    return (
-        <>
-            3 Days Forecast
-            {context.dailyForecast !== '' && context.dailyForecast.map((dayForecast, index) => (
-               <WeatherForecastItem
-                   weatherDescription = {dayForecast.weather[0].description}
-                   key={index}
-               />
-            ))}
-        </>
-    )
-}
+//     const context = useContext(GeolocationContext)
+//     console.log(context);
+    
+
+//     const getDayOfTheWeek = (unixEpochTime) => {
+//         let day = new Date(unixEpochTime).getDay();
+//         let formattedDay = new Intl.DateTimeFormat('en-US', {weekday: 'long'}).format(day);
+
+//         console.log(unixEpochTime);
+//         console.log(new Date(unixEpochTime));
+//         console.log(day)
+//         console.log(formattedDay);
+        
+//         return formattedDay;
+//     }
+    
+//         return (
+//         <>
+//             {/* {context.dailyForecast !== '' && context.dailyForecast.map((dayForecast, index) => 
+//                <WeatherForecastCard
+//                    weatherDescription = {dayForecast.weather[0].description}
+//                    dayOfTheWeek = {getDayOfTheWeek(dayForecast.dt * 1000)}
+//                    key={index}
+//                />
+//             ))} */}
+//         </>
+//     )
+// }
+
+// const Header = styled.div`
+    
+// `
+
