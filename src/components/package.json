@@ -31,5 +31,7 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "babel-plugin-macros": "^2.6.1"
+  }
 }

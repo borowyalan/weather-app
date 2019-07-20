@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { GeolocationConsumer } from './GeolocationProvider'
 
-export default class Geolocation extends Component {
+export default class GeolocationDisplay extends Component {
 
     render() {
        return (
            <GeolocationConsumer>
                 {({latitude, longitude, city, country}) => (
-                    <div>
+                    <p style={{textAlign: 'center',}}>
                         {latitude}, {longitude}, {city}, {country}
-                    </div>
+                    </p>
                 )}
            </GeolocationConsumer>
        )

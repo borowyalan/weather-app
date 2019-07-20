@@ -7,6 +7,7 @@ const GeolocationContext = createContext({
     longitude: '',
     city: 'Unknown',
     country: '',
+    dailyForecast: []
 })
 
 export class GeolocationProvider extends Component {
@@ -17,7 +18,8 @@ export class GeolocationProvider extends Component {
             longitude: '',
             city: 'Unknown',
             country: '',
-            status: ''
+            status: '',
+            dailyForecast: ''
         }
 
         this.geo_options = {
@@ -28,9 +30,11 @@ export class GeolocationProvider extends Component {
     }
 
     getWeather = (position) => {
-        axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${position.coords.latitude}&lon=${position.coords.longitude}&APPID=9bd94d4345bd3e88206217430456a10b&units=metric`)
+        axios.get(`https://api.openweathermap.org/data/2.5/forecast?cnt=3&lat=${position.coords.latitude}&lon=${position.coords.longitude}&APPID=9bd94d4345bd3e88206217430456a10b&units=metric`)
         .then(response => {
-            // console.log(response.data);
+            this.setState({
+                'dailyForecast': response.data.list
+            })
         })
 
         // this.setState({
