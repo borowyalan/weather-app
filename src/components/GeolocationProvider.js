@@ -7,7 +7,8 @@ const GeolocationContext = createContext({
     longitude: '',
     city: 'Unknown',
     country: '',
-    dailyForecast: []
+    forecastedWeather: [],
+    currentWeather: []
 })
 
 export class GeolocationProvider extends Component {
@@ -19,7 +20,8 @@ export class GeolocationProvider extends Component {
             city: 'Unknown',
             country: '',
             status: '',
-            dailyForecast: ''
+            forecastedWeather: '',
+            currentWeather: ''
         }
 
         this.geo_options = {
@@ -30,16 +32,16 @@ export class GeolocationProvider extends Component {
     }
 
     getWeather = (position) => {
-        axios.get(`https://api.openweathermap.org/data/2.5/forecast?cnt=3&lat=${position.coords.latitude}&lon=${position.coords.longitude}&APPID=9bd94d4345bd3e88206217430456a10b&units=metric`)
-        .then(response => {
+        axios.all([
+            axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&APPID=9bd94d4345bd3e88206217430456a10b&units=metric`),
+            axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${position.coords.latitude}&lon=${position.coords.longitude}&APPID=9bd94d4345bd3e88206217430456a10b&units=metric`)
+        ])
+        .then(axios.spread((currentWeatherResponse, forecastResponse) => {
             this.setState({
-                'dailyForecast': response.data.list
+                'currentWeather': currentWeatherResponse.data,
+                'forecastedWeather': forecastResponse.data
             })
-        })
-
-        // this.setState({
-        //     weather
-        // })
+        }));
     }
  
     geolocationSuccess = (position) => { 

@@ -1,25 +1,22 @@
 import React from 'react'
-import './Resizer.css'
 import logo from '../assets/logo.png'
 
-import SplitPane from 'react-split-pane'
 import GeolocationDisplay from './GeolocationDisplay'
-import WeatherForecast from './WeatherForecast'
+import CurrentWeatherCard from './CurrentWeatherCard'
 import { GeolocationProvider }  from './GeolocationProvider'
+import SplitPaneResponsive from './SplitPaneResponsive'
 
 import styled from 'styled-components/macro'
 
 function App() {
 
-    const mobile = true;
+    const mobile = false;
     return (
         <Container>
             <GeolocationProvider>
 
-                <SplitPane
+                <SplitPaneResponsive
                     split={mobile ? 'horizontal' : 'vertical'}
-                    minSize={mobile ? 300 : 350}
-                    maxSize={mobile ? 450 : 700}
                 >
                     <FlexPane>
                         <LogoContainer>
@@ -30,10 +27,10 @@ function App() {
                     </FlexPane>
                     
                     <WeatherPane>
-                        <WeatherForecast/>
+                        <CurrentWeatherCard/>
                     </WeatherPane>
-                    
-                </SplitPane>
+
+                </SplitPaneResponsive>
             </GeolocationProvider>
 
         </Container>
@@ -64,7 +61,7 @@ const FlexPane = styled.div`
 `
 
 const WeatherPane = styled(FlexPane)`
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 `
 
