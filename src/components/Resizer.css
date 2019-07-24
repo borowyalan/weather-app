@@ -47,3 +47,9 @@
     .Resizer.disabled:hover {
       border-color: transparent;
     }
+
+    @media(max-width: 450px){
+        .Resizer{
+            display: none;
+        }
+    }

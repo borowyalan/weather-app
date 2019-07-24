@@ -7,15 +7,10 @@ import MediaQuery from 'react-responsive'
 export default function SplitPaneResponsive(props) {
     return (
         <>
-            <MediaQuery maxWidth={600}>
-                <SplitPane 
-                    split="horizontal"
-                    minSize={280}
-                    maxSize={450}
-                >{props.children}
-                </SplitPane>
+            <MediaQuery maxWidth={450}>
+                {props.children}
             </MediaQuery>
-            <MediaQuery minWidth={600}>
+            <MediaQuery minWidth={450}>
                 <SplitPane 
                     split="vertical"
                     minSize={350}
