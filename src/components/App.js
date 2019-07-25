@@ -19,7 +19,9 @@ function App() {
                         <FlexPane>
                             <LogoContainer>
                                 <Logo src={logo}/>
-                                <p>Weather App made by Borowy Alan</p>
+                                <MadeBy> 
+                                    Weather App made by Borowy Alan
+                                 </MadeBy>
                             </LogoContainer>
                             <GeolocationDisplay/>
                         </FlexPane>
@@ -109,4 +111,8 @@ const Logo = styled.img`
         max-height: 14em;
         max-width: 14em;
     }
+`
+
+const MadeBy = styled.p`
+
 `
