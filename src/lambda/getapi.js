@@ -24,8 +24,8 @@ exports.handler = function(event, context, callback) {
 
 const get = () => {
 axios.all([
-  axios.get(`${API_URL}/weather?lat=${latitude}&lon=${longitude}&APPID=9bd94d4345bd3e88206217430456a10b&units=metric`),
-  axios.get(`${API_URL}/forecast?lat=${latitude}&lon=${longitude}&APPID=9bd94d4345bd3e88206217430456a10b&units=metric`)
+  axios.get(`${API_URL}/weather?lat=${latitude}&lon=${longitude}&APPID=${API_TOKEN}&units=metric`),
+  axios.get(`${API_URL}/forecast?lat=${latitude}&lon=${longitude}&APPID=${API_TOKEN}&units=metric`)
 ])
   .then(axios.spread((currentWeatherResponse, forecastResponse) => {
     weather = { current: currentWeatherResponse.data, forecast: forecastResponse.data}
