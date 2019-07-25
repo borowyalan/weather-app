@@ -33,7 +33,6 @@ export class GeolocationProvider extends Component {
 
     // fetch lambda function 'getapi.js'
     getWeather = (latitude, longitude) => {
-        console.log('starting')
         try {
             axios.get(`/.netlify/functions/getapi?latitude=${latitude}&longitude=${longitude}`)
             .then(response => {
