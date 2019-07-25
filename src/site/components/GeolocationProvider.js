@@ -1,6 +1,6 @@
 import React, { Component, createContext } from 'react';
 import axios from 'axios';
-import { reverseGeocode } from './util/reverseGeocode';
+import { reverseGeocode } from '../util/reverseGeocode';
 
 const GeolocationContext = createContext({
     latitude: '',
@@ -31,17 +31,20 @@ export class GeolocationProvider extends Component {
           };
     }
 
-    getWeather = (position) => {
-        axios.all([
-            axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&APPID=9bd94d4345bd3e88206217430456a10b&units=metric`),
-            axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${position.coords.latitude}&lon=${position.coords.longitude}&APPID=9bd94d4345bd3e88206217430456a10b&units=metric`)
-        ])
-        .then(axios.spread((currentWeatherResponse, forecastResponse) => {
-            this.setState({
-                'currentWeather': currentWeatherResponse.data,
-                'forecastedWeather': forecastResponse.data
-            })
-        }));
+    // fetch lambda function 'getapi.js'
+    getWeather = (latitude, longitude) => {
+        console.log('starting')
+        try {
+            axios.get(`/.netlify/functions/getapi?latitude=${latitude}&longitude=${longitude}`)
+            .then(response => {
+                console.log(response.data)
+                return response
+        })
+        } catch(err) {
+            console.log(err)
+            
+        }
+        
     }
  
     geolocationSuccess = (position) => { 
@@ -56,7 +59,7 @@ export class GeolocationProvider extends Component {
             })
         })
 
-        this.getWeather(position)
+        this.getWeather(position.coords.latitude, position.coords.longitude)
     }
 
     geolocationError = () => {

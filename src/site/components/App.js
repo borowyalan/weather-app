@@ -1,11 +1,11 @@
 import React from 'react'
-import logo from '../assets/logo.png'
+import logo from '../../assets/logo.png'
 
 import GeolocationDisplay from './GeolocationDisplay'
 import { GeolocationProvider }  from './GeolocationProvider'
 import SplitPaneResponsive from './SplitPaneResponsive'
 
-import { device } from "./util/breakpoints"
+import { device } from "../util/breakpoints"
 import styled from 'styled-components/macro'
 
 function App() {

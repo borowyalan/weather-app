@@ -3,7 +3,7 @@ import './Resizer.css'
 import SplitPane from 'react-split-pane'
 import MediaQuery from 'react-responsive'
 
-import { size } from './util/breakpoints'
+import { size } from '../util/breakpoints'
 
 export default function SplitPaneResponsive(props) {
     return (
