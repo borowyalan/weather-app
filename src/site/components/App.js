@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../../assets/logo.png'
+import logo from '../../assets/logo.svg'
 
 import GeolocationDisplay from './GeolocationDisplay'
 import { GeolocationProvider }  from './GeolocationProvider'
@@ -16,15 +16,15 @@ function App() {
                <SplitPaneResponsive
                         style={{display: 'hidden'}}
                     >
-                        <FlexPane>
+                        <LogoPane>
                             <LogoContainer>
                                 <Logo src={logo}/>
                                 <MadeBy> 
-                                    Weather App made by Borowy Alan
+                                    Weather&nbsp;App
                                  </MadeBy>
                             </LogoContainer>
                             <GeolocationDisplay/>
-                        </FlexPane>
+                        </LogoPane>
                         
                         <WeatherPane>
                             <div>dsf</div>
@@ -45,67 +45,79 @@ const Container = styled.div`
     flex-direction: column;
     align-items: space-around;
 
-    min-height: 100vh;
+    min-height: 100%;
+    background-color: lightblue;
 
-    background-color: gray;
-
-    @media ${device.tablet} {
+    @media ${device.laptop} {
+        box-sizing: border-box;
     }
 `
 
 const FlexPane = styled.div`
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-    background-color: yellow;
+    border: solid 1px white;
+    border-radius: 1em;
+    background-color: white;
+    box-shadow: 14px 14px 14px -10px rgba(0,0,0,0.15);
+
+    box-sizing: border-box;
 
     @media ${device.laptop} {
         justify-content: space-around;
-
-        width: 100%;
         height: 100%;
     }
+`
 
-    @media ${device.tablet} {
-        flex-direction: row;
-        align-items: flex-end;
-        justify-content: space-around;
+const LogoPane = styled(FlexPane)`
+
+    @media ${device.laptop} {
+        border-radius: 1em 0 0 1em;
     }
-
 `
 
 const WeatherPane = styled(FlexPane)`
+
+
     justify-content: space-around;
     align-items: center;
     flex: 1;
-    ${'' /* box-sizing: border-box; */}
 
-
-    height: auto;
-    width: 100%
-
-    margin-top: 2vh;
-
-    background-color: green;
+    background-color: white;
 
     @media ${device.laptop} {
-        margin-top: 0;
+        border-radius: 0 1em 1em 0;
     }
 `
 
+
+
 const LogoContainer = styled.div`
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    justify-content: space-around;
+    
+    width: 90%;
 
-    padding-top: 2em;
+    border-radius: 0.7em;
+
+    @media ${device.laptop} {
+        flex-direction: column;
+    }
+
 `
 
 const Logo = styled.img`
     width: 50%;
     height: auto;
-    max-height: 10em;
-    max-width: 10em;
+    max-height: 6em;
+    max-width: 6em;
+    padding: 1em;
+    padding-bottom: 0.7em;
 
     @media ${device.laptop} {
         max-height: 14em;
@@ -114,5 +126,8 @@ const Logo = styled.img`
 `
 
 const MadeBy = styled.p`
+    ${'' /* display: none; */}
+    font-size: 1.8em;
+    padding-right: 1em;
 
 `
