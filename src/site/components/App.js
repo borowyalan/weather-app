@@ -32,9 +32,7 @@ function App() {
 
                     </SplitPaneResponsive>
             </GeolocationProvider>
-
         </Container>
-        
     );
 }
 
@@ -73,15 +71,12 @@ const FlexPane = styled.div`
 `
 
 const LogoPane = styled(FlexPane)`
-
     @media ${device.laptop} {
         border-radius: 1em 0 0 1em;
     }
 `
 
 const WeatherPane = styled(FlexPane)`
-
-
     justify-content: space-around;
     align-items: center;
     flex: 1;
@@ -92,8 +87,6 @@ const WeatherPane = styled(FlexPane)`
         border-radius: 0 1em 1em 0;
     }
 `
-
-
 
 const LogoContainer = styled.div`
     display: flex;
@@ -108,7 +101,6 @@ const LogoContainer = styled.div`
     @media ${device.laptop} {
         flex-direction: column;
     }
-
 `
 
 const Logo = styled.img`
@@ -126,8 +118,6 @@ const Logo = styled.img`
 `
 
 const MadeBy = styled.p`
-    ${'' /* display: none; */}
     font-size: 1.8em;
     padding-right: 1em;
-
 `
