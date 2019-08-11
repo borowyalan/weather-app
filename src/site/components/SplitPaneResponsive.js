@@ -12,6 +12,7 @@ export default function SplitPaneResponsive(props) {
             <MediaQuery maxWidth={size.laptop}>
                 {props.children}
             </MediaQuery>
+            
             <MediaQuery minWidth={size.laptop}>
                 <SplitPaneWithResizer 
                     split="vertical"

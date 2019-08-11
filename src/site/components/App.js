@@ -13,9 +13,7 @@ function App() {
     return (
         <Container>
             <GeolocationProvider>
-               <SplitPaneResponsive
-                        style={{display: 'hidden'}}
-                    >
+               <SplitPaneResponsive>
                         <LogoPane>
                             <LogoContainer>
                                 <Logo src={logo}/>
@@ -27,10 +25,12 @@ function App() {
                         </LogoPane>
                         
                         <WeatherPane>
-                            <div>dsf</div>
+                            {/* <WeatherContainer>
+
+                            </WeatherContainer> */}
                         </WeatherPane>
 
-                    </SplitPaneResponsive>
+                </SplitPaneResponsive>
             </GeolocationProvider>
         </Container>
     );
@@ -71,7 +71,10 @@ const FlexPane = styled.div`
 `
 
 const LogoPane = styled(FlexPane)`
+    margin: 0.7em 0.6em 0.6em 0.6em;
+
     @media ${device.laptop} {
+        margin: 0;
         border-radius: 1em 0 0 1em;
     }
 `
@@ -83,7 +86,9 @@ const WeatherPane = styled(FlexPane)`
 
     background-color: white;
 
+    margin: 0 0.6em 0.7em 0.6em;
     @media ${device.laptop} {
+        margin: 0;
         border-radius: 0 1em 1em 0;
     }
 `
