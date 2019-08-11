@@ -1,5 +1,5 @@
 import React from 'react'
-import './Resizer.css'
+// import './Resizer.css'
 import SplitPane from 'react-split-pane'
 import MediaQuery from 'react-responsive'
 
