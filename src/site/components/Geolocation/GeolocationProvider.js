@@ -1,6 +1,6 @@
 import React, { Component, createContext } from 'react';
 import axios from 'axios';
-import { reverseGeocode } from '../util/reverseGeocode';
+import { reverseGeocode } from '../../util/reverseGeocode';
 
 const GeolocationContext = createContext({
     latitude: '',

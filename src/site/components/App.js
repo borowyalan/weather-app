@@ -1,9 +1,9 @@
 import React from 'react'
-import logo from '../../assets/logo.svg'
 
-import GeolocationDisplay from './GeolocationDisplay'
-import { GeolocationProvider }  from './GeolocationProvider'
+import { GeolocationProvider }  from './Geolocation/GeolocationProvider'
 import SplitPaneResponsive from './SplitPaneResponsive'
+import LogoPane from './LogoPane'
+import WeatherPane from './WeatherPane'
 
 import { device } from "../util/breakpoints"
 import styled from 'styled-components/macro'
@@ -14,21 +14,9 @@ function App() {
         <Container>
             <GeolocationProvider>
                <SplitPaneResponsive>
-                        <LogoPane>
-                            <LogoContainer>
-                                <Logo src={logo}/>
-                                <MadeBy> 
-                                    Weather&nbsp;App
-                                 </MadeBy>
-                            </LogoContainer>
-                            <GeolocationDisplay/>
-                        </LogoPane>
-                        
-                        <WeatherPane>
-                            {/* <WeatherContainer>
 
-                            </WeatherContainer> */}
-                        </WeatherPane>
+                        <LogoPane/>
+                        <WeatherPane/>
 
                 </SplitPaneResponsive>
             </GeolocationProvider>
@@ -51,78 +39,25 @@ const Container = styled.div`
     }
 `
 
-const FlexPane = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+// const LogoPane = styled(FlexPane)`
+//     margin: 0.7em 0.6em 0.6em 0.6em;
 
-    border: solid 1px white;
-    border-radius: 1em;
-    background-color: white;
-    box-shadow: 14px 14px 14px -10px rgba(0,0,0,0.15);
+//     @media ${device.laptop} {
+//         margin: 0;
+//         border-radius: 1em 0 0 1em;
+//     }
+// `
 
-    box-sizing: border-box;
+// const WeatherPane = styled(FlexPane)`
+//     justify-content: space-around;
+//     align-items: center;
+//     flex: 1;
 
-    @media ${device.laptop} {
-        justify-content: space-around;
-        height: 100%;
-    }
-`
+//     background-color: white;
 
-const LogoPane = styled(FlexPane)`
-    margin: 0.7em 0.6em 0.6em 0.6em;
-
-    @media ${device.laptop} {
-        margin: 0;
-        border-radius: 1em 0 0 1em;
-    }
-`
-
-const WeatherPane = styled(FlexPane)`
-    justify-content: space-around;
-    align-items: center;
-    flex: 1;
-
-    background-color: white;
-
-    margin: 0 0.6em 0.7em 0.6em;
-    @media ${device.laptop} {
-        margin: 0;
-        border-radius: 0 1em 1em 0;
-    }
-`
-
-const LogoContainer = styled.div`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    
-    width: 90%;
-
-    border-radius: 0.7em;
-
-    @media ${device.laptop} {
-        flex-direction: column;
-    }
-`
-
-const Logo = styled.img`
-    width: 50%;
-    height: auto;
-    max-height: 6em;
-    max-width: 6em;
-    padding: 1em;
-    padding-bottom: 0.7em;
-
-    @media ${device.laptop} {
-        max-height: 14em;
-        max-width: 14em;
-    }
-`
-
-const MadeBy = styled.p`
-    font-size: 1.8em;
-    padding-right: 1em;
-`
+//     margin: 0 0.6em 0.7em 0.6em;
+//     @media ${device.laptop} {
+//         margin: 0;
+//         border-radius: 0 1em 1em 0;
+//     }
+// `
