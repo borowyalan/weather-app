@@ -34,6 +34,8 @@ const Container = styled.div`
     min-height: 100%;
     background-color: lightblue;
 
+    overflow-y: hidden;
+
     @media ${device.laptop} {
         box-sizing: border-box;
     }

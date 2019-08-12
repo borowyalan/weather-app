@@ -37,6 +37,10 @@ export class GeolocationProvider extends Component {
             axios.get(`/.netlify/functions/getapi?latitude=${latitude}&longitude=${longitude}`)
             .then(response => {
                 console.log(response.data)
+                this.setState({
+                    'currentWeather': response.data.current,
+                    'forecastedWeather': response.data.forecast
+                })
                 return response
         })
         } catch(err) {

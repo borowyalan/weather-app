@@ -12,7 +12,7 @@ import styled from 'styled-components/macro'
 import { device } from "../../util/breakpoints"
 
 
-export default function index() {
+export default function Index() {
     return (
         <LogoPane>
             <LogoContainer>
